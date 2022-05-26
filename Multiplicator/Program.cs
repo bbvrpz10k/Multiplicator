@@ -10,8 +10,7 @@ namespace Multiplicator
     {
         static void Main(string[] args)
         {
-            bool run = true;
-            do
+            while(true)
             {
                 string origanal = Console.ReadLine();
                 if (origanal.Length < 1)
@@ -28,34 +27,31 @@ namespace Multiplicator
                         CountLetter++;
                 }
                 int CountNew = ((int)Math.Pow(2, CountLetter)) + 1;
-                char[,] newString = new char[CountNew, low.Length];
-                //int c = 0;
+                string[] newString = new string[CountNew];
                 for (int c = 0; c < CountNew; c++)
-                //for (int k = 0; k < low.Length; k++)
                 {
-                    int k = -1,dil=c;
+                    int dil=c;
                     for (int i = low.Length-1; i >= 0; i--)
                     {
-                        k++;
                         if (mask[i])
                             continue;
                         maskStep[i] = 0 == dil % 2;
                         dil = dil / 2;
                     }
+                    char[] newstring = new char[low.Length];
                     for (int i = 0; i < low.Length; i++)
                     {
 
                         if (maskStep[i])
-                            newString[c, i] = low[i];
+                            newstring[i] = low[i];
                         else
-                            newString[c, i] = UP[i];
-                        Console.Write(newString[c, i]);
+                            newstring[i] = UP[i];
+                        newString[c]= newstring.ToString();
                     }
-                    Console.WriteLine();
+                    Console.WriteLine(newstring);
                 }
 
             }
-            while (run);
         }
     }
 }
