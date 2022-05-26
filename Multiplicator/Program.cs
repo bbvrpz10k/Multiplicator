@@ -24,7 +24,7 @@ namespace Multiplicator
                 for (int i = 0; i < low.Length; i++)
                 {
                     mask[i] = low[i] == UP[i];
-                    if (mask[i])
+                    if (!mask[i])
                         CountLetter++;
                 }
                 int CountNew = ((int)Math.Pow(2, CountLetter)) + 1;
@@ -33,11 +33,11 @@ namespace Multiplicator
                 for (int c = 0; c < CountNew; c++)
                 //for (int k = 0; k < low.Length; k++)
                 {
-                    int k = -1,dil=0;
+                    int k = -1,dil=c;
                     for (int i = low.Length-1; i >= 0; i--)
                     {
                         k++;
-                        if (!mask[i])
+                        if (mask[i])
                             continue;
                         maskStep[i] = 0 == dil % 2;
                         dil = dil / 2;
